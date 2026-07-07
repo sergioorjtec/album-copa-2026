@@ -32,7 +32,7 @@
   button:disabled { opacity: .6; }
   .err { color: #d92626; font-size: 13px; font-weight: 600; margin-top: 10px; min-height: 18px; }
 </style>
-<!-- build v7-cc15 -->
+<!-- build v7b-cc15 -->
 </head>
 <body>
 <div class="box">
@@ -87,6 +87,8 @@ document.getElementById("f").addEventListener("submit", async function(ev){
 });
 if (!(window.crypto && crypto.subtle)) {
   document.getElementById("err").textContent = "Este navegador não suporta o desbloqueio (precisa de HTTPS).";
+} else if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", tryStored);
 } else { tryStored(); }
 </script>
 </body>
